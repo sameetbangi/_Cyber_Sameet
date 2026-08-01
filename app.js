@@ -26,23 +26,23 @@ function alertUser(message) {
 }
 
 const lessons = [
-  ['â—‰', 'Password Security', 'Build long, unique passwords and store them in a password manager.'],
-  ['âœ‰', 'Phishing', 'Spot pressure tactics, mismatched links, and impersonation.'],
-  ['âš ', 'Malware', 'Keep systems patched and software sources trusted.'],
-  ['âŠ—', 'Ransomware', 'Use tested backups and limit access to sensitive data.'],
-  ['â–£', 'Mobile Security', 'Protect the device in your pocket with updates and locks.'],
-  ['â˜', 'Cloud Security', 'Review sharing permissions before sensitive files spread.'],
-  ['âœ¦', 'AI Security', 'Treat synthetic voice and messages with healthy skepticism.'],
-  ['â™§', 'Social Engineering', 'Pause when an unusual request creates urgency.'],
-  ['âŒ', 'Wi-Fi Security', 'Avoid sensitive work on untrusted public networks.'],
-  ['â—Œ', 'Digital Privacy', 'Minimize data sharing and review account settings.']
+  ['◉', 'Password Security', 'Build long, unique passwords and store them in a password manager.'],
+  ['✉', 'Phishing', 'Spot pressure tactics, mismatched links, and impersonation.'],
+  ['⚠', 'Malware', 'Keep systems patched and software sources trusted.'],
+  ['⊗', 'Ransomware', 'Use tested backups and limit access to sensitive data.'],
+  ['▣', 'Mobile Security', 'Protect the device in your pocket with updates and locks.'],
+  ['☁', 'Cloud Security', 'Review sharing permissions before sensitive files spread.'],
+  ['✦', 'AI Security', 'Treat synthetic voice and messages with healthy skepticism.'],
+  ['♧', 'Social Engineering', 'Pause when an unusual request creates urgency.'],
+  ['⌁', 'Wi-Fi Security', 'Avoid sensitive work on untrusted public networks.'],
+  ['◌', 'Digital Privacy', 'Minimize data sharing and review account settings.']
 ];
 
 $('#lessons').innerHTML = lessons.map(([icon, title, description]) => `
   <article class="lesson"><div class="icon">${icon}</div><h3>${title}</h3><p>${description}</p>
   <details><summary>Open lesson + quick check</summary><p><b>Prevention:</b> Verify sources, reduce permissions, keep software updated, and pause before taking urgent action.</p><button class="lesson-check">Quick check: Is urgency a warning sign?</button></details></article>
 `).join('');
-$$('.lesson-check').forEach(button => button.addEventListener('click', () => alertUser('Correct â€” urgency is a common social-engineering signal.')));
+$$('.lesson-check').forEach(button => button.addEventListener('click', () => alertUser('Correct — urgency is a common social-engineering signal.')));
 
 const defaultNews = [
   ['Zero-Day Vulnerabilities', 'Critical patch guidance for enterprise teams', 'Prioritize exposed edge services and validate emergency patch deployment.'],
@@ -58,7 +58,7 @@ function renderCards(target, cards) {
 }
 renderCards('#newsCards', defaultNews);
 renderCards('#blogPosts', journalPosts);
-$('#scamCards').innerHTML = scams.map(([risk, title]) => `<article><div class="tag" style="color:${risk === 'High' ? '#ff6175' : '#ffc65d'}">${risk} RISK</div><h3>${title}</h3><p>Fraudsters use urgency and impersonation. Never share OTPs, payment approvals, or remote access under pressure.</p><a class="plain" href="#learn">How to stay safe â†’</a></article>`).join('');
+$('#scamCards').innerHTML = scams.map(([risk, title]) => `<article><div class="tag" style="color:${risk === 'High' ? '#ff6175' : '#ffc65d'}">${risk} RISK</div><h3>${title}</h3><p>Fraudsters use urgency and impersonation. Never share OTPs, payment approvals, or remote access under pressure.</p><a class="plain" href="#learn">How to stay safe →</a></article>`).join('');
 
 $('.menu').addEventListener('click', () => $('nav').classList.toggle('open'));
 $$('nav a').forEach(link => link.addEventListener('click', () => $('nav').classList.remove('open')));
@@ -118,7 +118,7 @@ $('#strength').addEventListener('input', event => {
   const card = event.target.closest('article');
   const bar = card.querySelector('.bar i');
   bar.style.width = `${score}%`; bar.style.background = score > 75 ? '#00ffb3' : score > 45 ? '#ffc65d' : '#ff6175';
-  card.querySelector('output').textContent = score > 75 ? 'Strong â€” great protection.' : score > 45 ? 'Moderate â€” add length and variety.' : 'Weak â€” make it longer and unique.';
+  card.querySelector('output').textContent = score > 75 ? 'Strong — great protection.' : score > 45 ? 'Moderate — add length and variety.' : 'Weak — make it longer and unique.';
 });
 
 $('.scan').addEventListener('submit', event => {
@@ -144,7 +144,7 @@ $$('#checks input').forEach(input => input.addEventListener('change', updateScor
 updateScore();
 
 const questionsByLevel = {
-  Beginner: [['What is the safest response to an unexpected OTP request?', 'Ignore it and contact the service through its official app/site.', 'Share it only if the caller sounds legitimate.', 'Forward it to a friend.'], ['Which password is strongest?', 'A unique 16+ character password created by a password manager.', 'Your name plus birth year.', 'One password reused everywhere.'], ['A QR payment code may be risky whenâ€¦', 'You are asked to scan it to receive money.', 'It appears in your own banking app.', 'It belongs to a known merchant.']],
+  Beginner: [['What is the safest response to an unexpected OTP request?', 'Ignore it and contact the service through its official app/site.', 'Share it only if the caller sounds legitimate.', 'Forward it to a friend.'], ['Which password is strongest?', 'A unique 16+ character password created by a password manager.', 'Your name plus birth year.', 'One password reused everywhere.'], ['A QR payment code may be risky when…', 'You are asked to scan it to receive money.', 'It appears in your own banking app.', 'It belongs to a known merchant.']],
   Intermediate: [['What should you verify before approving a payment request?', 'The request through a known, independent contact channel.', 'That the message uses your company logo.', 'That it arrived during business hours.'], ['Why are software updates important?', 'They often fix security vulnerabilities.', 'They make every password stronger.', 'They prevent all phishing.'], ['What is the safest public Wi-Fi practice?', 'Use HTTPS and avoid sensitive transactions when possible.', 'Disable your device lock.', 'Share your hotspot password publicly.']],
   Advanced: [['What best limits ransomware impact?', 'Tested, isolated backups and least-privilege access.', 'Paying immediately.', 'Keeping every account as an administrator.'], ['What does MFA fatigue exploit?', 'Repeated prompts that pressure a user to approve one.', 'A weak Wi-Fi signal.', 'A slow password manager.'], ['What is an out-of-band verification?', 'Confirming through a different trusted channel.', 'Replying to the same suspicious email.', 'Checking only the sender display name.']]
 };
@@ -157,7 +157,7 @@ function showQuestion() {
 function finishQuiz() {
   const score = Math.round((correct / questionsByLevel[level].length) * 100);
   $('#question').hidden = true; $('#quizDone').hidden = false; $('#quizScore').textContent = `${score}/100`;
-  $('#certText').textContent = `Certificate CYBER-${crypto.getRandomValues(new Uint32Array(1))[0].toString(16).slice(0, 8).toUpperCase()} Â· ${level} level Â· ${score >= 66 ? 'Threat-aware and ready.' : 'Keep learningâ€”every secure choice counts.'}`;
+  $('#certText').textContent = `Certificate CYBER-${crypto.getRandomValues(new Uint32Array(1))[0].toString(16).slice(0, 8).toUpperCase()} · ${level} level · ${score >= 66 ? 'Threat-aware and ready.' : 'Keep learning—every secure choice counts.'}`;
 }
 function startQuiz() { questionIndex = 0; correct = 0; $('#progress').style.width = '0%'; $('#question').hidden = false; $('#quizDone').hidden = true; showQuestion(); }
 $$('.levels button').forEach(button => button.addEventListener('click', () => { $$('.levels .active').forEach(active => active.classList.remove('active')); button.classList.add('active'); level = button.dataset.level; startQuiz(); }));
